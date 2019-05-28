@@ -5,8 +5,7 @@ package packer;
  * @author I.M.Bad
  */
 public class Box {
-    
-    
+     
     private Manifest contents;
     private Customer customer;
     private Depot depot; 
@@ -16,17 +15,16 @@ public class Box {
         this.depot = depot;
         contents = new Manifest();
     }
-
     
-//    public void addProduct(Product product) {
-//        if (canFit(product)) {
-//            contents.addProduct(product, 1);
-//        }
-//    }
+    //COMMENT OUT
+    public void addProduct(Product product) {
+        if (canFit(product)) {
+            contents.addProduct(product, 1);
+        }
+    }   
     
-    
-    public void addProduct(Product product, int quantity) {
-        if (canFit(product,quantity)); {
+    public void addProducts(Product product, int quantity) {
+        if (canFits(product,quantity)); {
             contents.addProduct(product, quantity);
         }
     }
@@ -49,22 +47,21 @@ public class Box {
         return getLabel();
     }
     
-    // changed from 'contents.getWeight()' 
     public double getWeight() {
-        return contents.getWeight();
+        return contents.getTotalWeight();
     }
     
-    public void addProduct(Product product) {
-        if (canFit(product)) {
-            contents.addProduct(product, 1);
-        }
-    }
+//    public void addProduct(Product product) {
+//        if (canFit(product)) {
+//            contents.addProduct(product, 1);
+//        }
+//    }
     
     public boolean canFit(Product p) {
         return p.getWeight() < 40;
     }
     
-    public boolean canFit(Product p, int quantity) {
+    public boolean canFits(Product p, int quantity) {
         return (p.getWeight() * quantity) < 40;
     }
     
